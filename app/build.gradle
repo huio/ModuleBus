@@ -9,7 +9,6 @@ if(project.ext.isLib){
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId
@@ -29,12 +28,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    implementation 'com.android.support:design:25.0.1'
+    implementation 'com.android.support:appcompat-v7:25.0.1'
 
     if(project.ext.isLib) {
         embedded project(':page_body')
@@ -43,14 +42,14 @@ dependencies {
         embedded project(':page_view')
     }else{
         if (!project.ext.isDebug) {
-            compile project(':a')
-            compile project(':b')
-            compile project(':page_body')
-            compile project(':page_body_bt')
-            compile project(':page_name')
-            compile project(':page_view')
+            implementation project(':a')
+            implementation project(':b')
+            implementation project(':page_body')
+            implementation project(':page_body_bt')
+            implementation project(':page_name')
+            implementation project(':page_view')
         }else{
-            compile project(':core')
+            implementation project(':core')
         }
     }
 }
